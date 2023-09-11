@@ -21,4 +21,8 @@ public class Waiter {
 	public void outFootFromPaperOrder(Integer number) {
 		this.order.strikeOutFoot(number);
 	}
+
+	public Order getOrder() {
+		return this.order;
+	}
 }

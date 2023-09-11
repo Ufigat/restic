@@ -11,8 +11,10 @@ import java.util.List;
 
 public class Cooker {
 
-	public List<RealFoot> cooking(Order order) {
-		return order.readFootMap()
+	private Order order;
+
+	public List<RealFoot> cooking() {
+		return this.order.readFootMap()
 				.values()
 				.stream()
 				.map(
@@ -43,5 +45,9 @@ public class Cooker {
 
 	private RealSalad cookingRealSalad(Salad salad) {
 		return new RealSalad(salad.getCalories());
+	}
+
+	public void takeOrder(Order order) {
+		this.order = order;
 	}
 }

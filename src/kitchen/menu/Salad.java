@@ -6,6 +6,14 @@ public class Salad implements Foot {
 
 	private Integer calories;
 
+	private Integer discount;
+
+	public Salad(Double cost, Integer calories, Integer discount) {
+		this.cost = cost;
+		this.calories = calories;
+		this.discount = discount;
+	}
+
 	public Salad(Double coast, Integer calories) {
 		this.cost = coast;
 		this.calories = calories;
@@ -34,5 +42,15 @@ public class Salad implements Foot {
 	@Override
 	public void setCalories(Integer calories) {
 		this.calories = calories;
+	}
+
+	@Override
+	public Integer getDiscount() {
+		return this.discount;
+	}
+
+	@Override
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
 	}
 }

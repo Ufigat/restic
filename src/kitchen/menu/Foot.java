@@ -8,4 +8,8 @@ public interface Foot {
 	Integer getCalories();
 
 	void setCalories(Integer calories);
+
+	Integer getDiscount();
+
+	void setDiscount(Integer discount);
 }

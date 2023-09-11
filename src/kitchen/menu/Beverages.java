@@ -6,11 +6,20 @@ public class Beverages implements Foot {
 
 	public Integer calories;
 
-	public Beverages(Double coast, Integer calories) {
+	public Integer discount;
+
+	public Beverages(Double coast, Integer calories, Integer discount) {
 		this.cost = coast;
+		this.calories = calories;
+		this.discount = discount;
+	}
+
+	public Beverages(Double cost, Integer calories) {
+		this.cost = cost;
 		this.calories = calories;
 	}
 
+	@Override
 	public String toString() {
 		return "Напиток: " + "стоимость: " + this.cost + ", калорийность: " + this.calories;
 	}
@@ -33,5 +42,15 @@ public class Beverages implements Foot {
 	@Override
 	public void setCalories(Integer calories) {
 		this.calories = calories;
+	}
+
+	@Override
+	public Integer getDiscount() {
+		return null;
+	}
+
+	@Override
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
 	}
 }

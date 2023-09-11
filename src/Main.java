@@ -1,19 +1,16 @@
+import cashbox.CashMachine;
 import hall.Waiter;
-import hall.order.PaperOrder;
 import kitchen.Cooker;
 import kitchen.Menu;
 import kitchen.menu.*;
 
-import java.util.HashMap;
-
 public class Main {
 	public static void main(String[] args) {
 
-		Foot f1 = new Fish(1500.00, 200);
-		Foot m1 = new Meat(3000.00, 400);
+		Foot f1 = new Fish(1500.00, 200, 15);
+		Foot m1 = new Meat(3000.00, 400, 10);
 		Foot s1 = new Salad(300.00, 100);
 		Foot b1 = new Beverages(250.00, 150);
-
 
 		Menu menu = Menu.getInstance();
 		menu.set(1, f1);
@@ -21,23 +18,31 @@ public class Main {
 		menu.set(3, s1);
 		menu.set(4, b1);
 
+		Waiter Ivan = new Waiter();
+		Cooker Semyon = new Cooker();
+
 		System.out.println("Меню: ");
 		System.out.println(menu.getFootHashMap());
 
-		Waiter Ivan = new Waiter();
-		Cooker Semen = new Cooker();
+		Ivan.createPaperOrder();
+		Ivan.setFootInPaperOrder(1, f1);
+		Ivan.setFootInPaperOrder(2, m1);
+		Ivan.setFootInPaperOrder(3, s1);
+		Ivan.setFootInPaperOrder(4, b1);
 
-		PaperOrder firstOrder = new PaperOrder(
-				new HashMap<Integer, Foot>() {{
-					put(1, f1);
-					put(2, f1);
-					put(3, m1);
-					put(4, s1);
-					put(5, b1);
-				}}
-		);
+
+		CashMachine firstCacheMachine = new CashMachine();
+
+		firstCacheMachine.changeCooker(Semyon);
+		firstCacheMachine.setOrder(Ivan.getOrder());
+		firstCacheMachine.sendOrderToCooker();
+
+		firstCacheMachine.sendOrderToCooker();
 
 		System.out.println("Приготовленные блюда по заказу: ");
-		System.out.println(Semen.cooking(firstOrder));
+		System.out.println(Semyon.cooking());
+
+		System.out.println("Счет по заказу: ");
+		System.out.println(firstCacheMachine.calculation());
 	}
 }
